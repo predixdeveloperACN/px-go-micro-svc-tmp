@@ -1,0 +1,18 @@
+---
+applications:
+- name: px-application-name
+  memory: 1G
+  instances: 1
+  disk_quota: 512M
+  command: /app/bin/px-go-micro-svc-tmp
+  buildpack : https://github.com/cloudfoundry/go-buildpack.git
+  services:
+    - px-common-services
+  env:
+    CUPS_NAME: px-common-services
+    # enable debugging
+    DEBUG: true
+    # cache expiry in hours
+    CACHE_EXPIRY: 24
+    # enable UAA authentication
+    OAUTH2_DISABLED: true

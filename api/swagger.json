@@ -1,0 +1,84 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Predix Go Microservice Template API",
+        "description": "Predix Go Microservice Template sample API documentation"
+    },
+    "tags" : [
+        {
+            "name" : "diagnostic",
+            "description": "For diagnostic purposes"
+        }
+    ],
+    "basePath": "/api/v1",
+    "paths": {
+        "/info": {
+            "get": {
+                "tags" : [ "diagnostic" ],
+                "summary": "Gets run-time information about this service",
+                "description": "Gets run-time information about this service.",
+                "produces": [
+                    "text/plain",
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "$ref": "#/definitions/ProcessInfo"
+                        }
+                    }
+                }
+            }
+        },
+        "/ping": {
+            "get": {
+                "tags" : [ "diagnostic" ],
+                "summary": "Validates that the service is running and responding to requests",
+                "description": "Validates that the service is running and responding to requests. It will also return the last time data was received.",
+                "produces": [
+                    "application/json",
+                    "text/plain"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response"
+                    },
+                    "404": {
+                        "description": "Endpoint Not Found",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "ProcessInfo": {
+            "type": "object",
+            "description": "This is used primarily for debugging so the data returned can change depending on the need. The data given below should be considered the minimum.",
+            "properties": {
+                "predix-space": {
+                    "type": "string"
+                },
+                "instance-no": {
+                    "type": "integer"
+                },
+                "uptime": {
+                    "type": "number"
+                },
+                "max-go-threads": {
+                    "type": "integer"
+                },
+                "bytesUsed": {
+                    "type": "number"
+                },
+                "bytesAvail": {
+                    "type": "number"
+                }
+            }
+        }
+    }
+}
