@@ -5,7 +5,7 @@ applications:
   instances: 1
   disk_quota: 512M
   command: /app/bin/px-go-micro-svc-tmp
-  buildpack : https://github.com/cloudfoundry/go-buildpack.git
+  buildpack : go_buildpack
   services:
     - px-common-services
   env:
